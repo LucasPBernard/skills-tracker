@@ -27,7 +27,7 @@ public class SkillsController {
     public String createForm() {
         return "<html>" +
                 "<body>" +
-                "<form method='post'>" +
+                "<form action='results' method='post'>" +
                 "<label>Name<br><input type='text' name='name' /></label><br>" +
                 "<label>My favorite language:<br>" +
                 "<select name=\"firstlang\" id=\"firstlang\">" +
@@ -60,7 +60,7 @@ public class SkillsController {
                 "</body>" +
                 "</html>";
     }
-    @PostMapping("/form")
+    @PostMapping("/results")
     @ResponseBody
     public String respondToFormSubmission(@RequestParam String name,
                                           @RequestParam String firstlang,
@@ -69,11 +69,10 @@ public class SkillsController {
         return "<html>" +
                 "<body>" +
                 "<h1>" + name + "</h1>" +
-                "<ol>" +
-                "<li>" + firstlang + "</li>" +
-                "<li>" + secondlang + "</li>" +
-                "<li>" + thirdlang + "</li>" +
-                "</ol>" +
+                "<table>" +
+                "<tr><th>First Language</th><th>Second Language</th><th>Third Language</tr>" +
+                "<tr><td>" + firstlang + "</td><td>" + secondlang + "</td><td>" + thirdlang +
+                "</table>" +
                 "</body>" +
                 "</html>";
     }
